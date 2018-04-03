@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" name="files" id="myFiles" />
+	<button id='btn'>提交</button>
+	<script type="text/javascript">
+	  var files;
+	  myFiles.onchange = ()=>{
+	  	files = myFiles.files[0]	  	
+	  }
+
+	  btn.onclick = ()=>{
+   	   var fd = new FormData();	 
+       // console.log(files)  
+       fd.append('aa',files);
+   		let xhr = new XMLHttpRequest();
+	   xhr.open('post','http://localhost:8000/file',true);
+	   xhr.send(fd);
+	   xhr.onload = ()=>{
+	   	console.log(xhr.responseText);
+	    }
+	  }
+	  
+
+	</script>
+</body>
+</html>
